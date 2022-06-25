@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PizzaOrders</string>
+    <string name="in_process">В процессе</string>
+    <string name="Done">Готовы</string>
+    <string name="cappuccino">Cappuccino</string>
+    <string name="sample">x2</string>
+    <string name="_150rub">150₽</string>
+</resources>

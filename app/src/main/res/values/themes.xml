@@ -1,0 +1,12 @@
+<resources>
+
+        <style name="Theme.PizzaOrders" parent="Theme.MaterialComponents.Light.NoActionBar">
+            <item name="colorPrimary">@color/mainColor</item>
+            <item name="colorPrimaryVariant">@color/mainColor</item>
+            <item name="colorOnPrimary">@color/white</item>
+
+            <item name="colorSecondary">@color/teal_200</item>
+            <item name="colorSecondaryVariant">@color/teal_700</item>
+            <item name="colorOnSecondary">@color/black</item>
+        </style>
+</resources>
