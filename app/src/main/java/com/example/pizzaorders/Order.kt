@@ -1,8 +1,9 @@
 package com.example.pizzaorders
 
 data class Order(
-    var name: String,
-    var image: String,
+    var title: String,
+    var image_url: String,
     var price: Int,
-    var count: Int
+    var count: Int,
+    var _id: String
 )

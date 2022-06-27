@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@drawable/gradient_back">
+    android:background="@drawable/gradient_back"
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -24,10 +24,14 @@
         android:id="@+id/rvInProcess"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:overScrollMode="never"
         android:padding="4dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:spanCount="3"
+        tools:listitem="@layout/menu_element" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

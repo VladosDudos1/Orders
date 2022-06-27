@@ -4,12 +4,14 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pizzaorders.databinding.MenuElementBinding
 
-class OrderAdapter(var list: List<Order>) : RecyclerView.Adapter<OrderAdapter.ViewHolder>() {
 
+class OrderAdapter : RecyclerView.Adapter<OrderAdapter.ViewHolder>() {
+    private var list: List<Order> = listOf()
     private lateinit var binding: MenuElementBinding
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
@@ -29,14 +31,24 @@ class OrderAdapter(var list: List<Order>) : RecyclerView.Adapter<OrderAdapter.Vi
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val order: Order = list[holder.adapterPosition]
+
         Glide.with(binding.imgOrder)
-            .load(list[position].image)
+            .load(order.image_url)
             .into(binding.imgOrder)
 
-        binding.countTxt.text = "x" + list[position].count
-        binding.nameOrder.text = list[position].name
-        binding.priceTxt.text = list[position].price.toString()
+        binding.countTxt.text = "x" + order.count
+        binding.nameOrder.text = order.title
+        binding.priceTxt.text = order.price.toString() + "₽"
     }
 
     override fun getItemCount(): Int = list.size
+
+    fun update(newList: List<Order>) {
+        val productDiffUtilCallback = OrdersDiffUtilCallback(list, newList)
+        val productDiffResult = DiffUtil.calculateDiff(productDiffUtilCallback)
+        list = newList
+        productDiffResult.dispatchUpdatesTo(this)
+
+    }
 }
